@@ -1,7 +1,5 @@
 package com.dss.rest_template_service.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 public class Task {
     private Long id;
 
@@ -14,6 +12,11 @@ public class Task {
     }
 
     public Task() {
+    }
+    public Task(String status, String name, User user) {
+        this.status = status;
+        this.name = name;
+        this.user = user;
     }
 
     public Task(Long id, String status, String name, User user) {
@@ -49,6 +52,16 @@ public class Task {
 
     private String name;
     private String status;
+
+    @Override
+    public String toString() {
+        return "Task{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", status='" + status + '\'' +
+                ", user=" + user +
+                '}';
+    }
 
     private User user;
 }

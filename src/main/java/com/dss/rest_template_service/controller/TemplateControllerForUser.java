@@ -10,10 +10,8 @@ import org.springframework.web.bind.annotation.*;
 
 import org.springframework.web.client.RestTemplate;
 
-import java.net.URI;
-
 @RestController
-public class TemplateController {
+public class TemplateControllerForUser {
     @Autowired
     RestTemplate restTemplate;
 
@@ -70,37 +68,4 @@ public class TemplateController {
 
         return response;
     }
-
-
-//saving new Task
-
-
-    @PostMapping("/save-task")
-    public ResponseEntity<?> saveTask() {
-        //url , header -> request entity
-        ///reponse entity ->url,  reqyenitty,post,class
-        String url = "http://localhost:8080/save";
-
-        User user = new User();
-        user.setId(22L);
-
-        Task task = new Task();
-        task.setName("karo rest-template");
-        task.setStatus("Honewala hai");
-        task.setUser(user);
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-
-        HttpEntity<Task> reqEntity = new HttpEntity<>(task, headers);
-
-      //  RequestEntity<Task> reqEn = new RequestEntity<>(task, headers,HttpMethod.POST, URI.create(url));
-//        ResponseEntity<Task> response = restTemplate.exchange(reqEn, Task.class);
-
-        ResponseEntity<Task> response = restTemplate.exchange(
-                url, HttpMethod.POST, reqEntity, Task.class);
-
-        return response;
-    }
-
 }

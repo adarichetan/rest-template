@@ -63,9 +63,14 @@ public class TemplateControllerForUser {
 
         HttpEntity<User> requstEntity = new HttpEntity<>(userToSend, headers);
 
-        ResponseEntity<User> response = restTemplate.exchange(
-                url, HttpMethod.POST, requstEntity, User.class);
+        ResponseEntity<User> response = restTemplate.exchange( url, HttpMethod.POST, requstEntity, User.class);
 
         return response;
+    }
+
+    @DeleteMapping("/delete-user/{id}")
+    public void deleteById(@PathVariable("id") Long id) {
+        String url = "http://localhost:8080/deleteMap/" + id;
+        restTemplate.delete(url);
     }
 }

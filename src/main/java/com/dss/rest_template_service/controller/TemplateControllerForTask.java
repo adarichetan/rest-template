@@ -60,7 +60,13 @@ public class TemplateControllerForTask {
         user.setId(25L);
         user.setName("sf");
 
-        Task task = new Task( id, "asffasfas", "out", user);
-        restTemplate.put(url,task);
+        Task task = new Task(id, "asffasfas", "out", user);
+        restTemplate.put(url, task);
     }
+
+//    @DeleteMapping("/delete/{id}")
+//    public void deleteById(@PathVariable Long id) {
+//        String url = "http://localhost:8080/delete-task/" + id;
+//        restTemplate.delete(url);
+//    }
 }
